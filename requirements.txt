@@ -2,3 +2,4 @@ flask
 selenium
 undetected-chromedriver
 gunicorn
+webdriver-manager

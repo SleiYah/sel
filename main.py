@@ -1,27 +1,26 @@
 import os
 import undetected_chromedriver as uc
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import json
+from webdriver_manager.chrome import ChromeDriverManager
 
-# ✅ Get Chrome & ChromeDriver paths (set manually)
-CHROME_PATH = "/usr/bin/google-chrome"
-CHROMEDRIVER_PATH = "/usr/bin/chromedriver"
+# ✅ Use ChromeDriverManager to automatically download the latest ChromeDriver
+CHROMEDRIVER_PATH = ChromeDriverManager().install()
 
-# ✅ Start undetected Chrome with correct paths
+# ✅ Start undetected Chrome without manually setting paths
 options = uc.ChromeOptions()
-options.binary_location = CHROME_PATH  # ✅ Set Chrome binary path
-
-# 🚀 Optimize browser for Railway
 options.add_argument("--headless=new")  # ✅ Headless mode for Railway
 options.add_argument("--disable-gpu")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 
-# ✅ Initialize WebDriver with manual ChromeDriver path
-driver = uc.Chrome(options=options, driver_executable_path=CHROMEDRIVER_PATH)
+# ✅ Initialize WebDriver using ChromeDriverManager
+service = Service(CHROMEDRIVER_PATH)
+driver = uc.Chrome(service=service, options=options)
 
 try:
     print("🌐 Opening Aternos website...")
