@@ -8,18 +8,15 @@ from selenium.webdriver.support import expected_conditions as EC
 import json
 from webdriver_manager.chrome import ChromeDriverManager
 
-# ✅ Use ChromeDriverManager to automatically download the latest ChromeDriver
-CHROMEDRIVER_PATH = ChromeDriverManager().install()
-
-# ✅ Start undetected Chrome without manually setting paths
+# ✅ Let webdriver-manager install and manage ChromeDriver automatically
 options = uc.ChromeOptions()
 options.add_argument("--headless=new")  # ✅ Headless mode for Railway
 options.add_argument("--disable-gpu")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 
-# ✅ Initialize WebDriver using ChromeDriverManager
-service = Service(CHROMEDRIVER_PATH)
+# ✅ Initialize WebDriver without manually setting a path
+service = Service(ChromeDriverManager().install())
 driver = uc.Chrome(service=service, options=options)
 
 try:
