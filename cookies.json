@@ -1,0 +1,10 @@
+[
+    {
+        "domain": "aternos.org",
+        "name": "ATERNOS_SESSION",
+        "value": "FtSwqtKW6WDNWQje5uD7BjaIcjP1B6NMKULwYagpl0X3afXuk6ZBjDwiLBiRBUlUClYAORI8DiPIkKvV4SNnKc9rIMgSZdnrjsyT",
+        "path": "/",
+        "httpOnly": true,
+        "secure": false    }
+       
+]
